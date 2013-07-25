@@ -1,8 +1,9 @@
-title : Strength in Numbers
+name : Strength in Numbers
 tagline: Xiaofei-Wang.com
-author :
-  name : Xiaofei Wang
-  email : xiaofei.wang@yale.edu
-  github : eastwind87
+author : Xiaofei Wang
+author_email : xiaofei.wang@yale.edu
 
-production_url : http://xiaofei-wang.com
+production_url : http://xiaofei-wang.com/
+url: http://xiaofei-wang.com/
+
+auto : false
