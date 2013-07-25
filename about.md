@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-tagline: Welcome
+title: About Me
+header: About Me
 ---
 # About Me
 ----
