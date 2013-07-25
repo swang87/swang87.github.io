@@ -1,7 +1,9 @@
 ---
 layout: page
 title: Home
-tagline: Welcome
+header: Xiaofei (Susan) Wang
+subtitle: PhD Candidate, Statistics, Yale University
+class: home
 ---
 ## To-Do
 
