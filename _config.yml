@@ -4,6 +4,6 @@ author : Xiaofei Wang
 author_email : xiaofei.wang@yale.edu
 
 production_url : http://xiaofei-wang.com/
-baseurl: /xiaofei-wang.github.com
+baseurl: http://xiaofei-wang.com
 
 auto : false
