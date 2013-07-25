@@ -1,7 +1,108 @@
-{% include _layouts/header.html %}
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>xiaofei-wang.com: {{title}}</title>
+    <meta name="title" content="Strength in Numbers">
+    <meta name="description" content="Home page of Xiaofei Wang">
+    <meta name="author" content="{{site.author}}">
+    <meta name="keywords" content="Xiaofei Wang, statistics">
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width≈ initial-scale=1">
+    <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico">    
+    <link rel="stylesheet" href="{{site.baseurl}}/themes/bootstrap/css/bootstrap.min.css">
+   <!-- <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '{{ google_analytics_code }}']);
+        {% if google_analytics_domain != "" %}
+        _gaq.push(['_setDomainName', '{{ google_analytics_domain }}']);
+        {% endif %}
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>-->
+    <!-- All JavaScript at the bottom, except this Modernizr build.
+       Modernizr enables HTML5 elements & feature detects for optimal performance. -->
+</head>
+<body class="preview" id="top" data-spy="scroll" data-target=".subnav" data-offset="80">
+<!-- Navbar
+================================================== -->
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="/">Strength in Numbers</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class=""><a href="{{site.baseurl}}/">Home</a></li>
+        </ul>
+          <ul class="nav pull-right">
+            
+            <li><a href="{{site.baseurl}}/about">About Me</a></li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Research <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{site.baseurl}}/research/publications">Publications</a></li>
+                <li><a href="{{site.baseurl}}/research/talks">Talks</a></li>
+                <li><a href="{{site.baseurl}}/research/demos">Demos</a></li>
+              </ul>
+            </li>
+            <li class="divider-vertical"></li>
+            <li><a href="{{site.baseurl}}/teaching">Teaching</a></li>
+<!--             <li class="divider-vertical"></li>
+            <li><a href="#">Links</a></li> -->
+            <li class="divider-vertical"></li>
+            <li><a href="mailto:xiaofei.wang@yale.edu">Contact</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->
+  <div class="container">
+  <!-- Masthead
+  ================================================== -->
+  <header class="jumbotron subhead" id="overview">
+    <div class="row">
+      <div class="span12">
+         <h1>{{header}}</h1>
+         {% if {{page.subtitle}} %}
+          <p class="lead">{{ subtitle}} </p>
+         {% endif %}
+        <hr>
+      </div>
+    </div>
+   </header>
+   <hr>
+
   <main>
     <div class="row">
         {{content}}
       </div>
-      </main>
-{% include _layouts/footer.html %}
+      </main>         <!-- Footer
+              ================================================== -->
+              <hr>
+            <div class="container">
+                  <footer id="footer">
+                    <p class="pull-right"><a href="#top">Back to top</a></p>
+                    <p>&copy; Copyright 2013 by Xiaofei Wang.</p>                 
+                  </footer>
+
+
+
+
+    <!-- JavaScript at the bottom for fast page loading -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  </body>
+</html>
