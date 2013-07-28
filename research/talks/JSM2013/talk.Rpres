@@ -1,0 +1,35 @@
+Graphical Product Partition Models
+========================================================
+author: Xiaofei (Susan) Wang
+date: August 4, 2013
+transition: fade
+font-import: http://fonts.googleapis.com/css?family=Sarina
+font-family: 'Sarina'
+
+url:
+  lib   : ../../libraries
+  assets: ../assets
+  
+Product Partition Models (PPMs) for Change Points
+========================================================
+
+For more details on authoring R presentations click the
+**Help** button on the toolbar.
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+Slide With Code
+========================================================
+type: alert
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```
