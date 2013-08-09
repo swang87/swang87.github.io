@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="{{site.baseurl}}/themes/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript">
         var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', '{{ google_analytics_code }}']);
+        _gaq.push(['_setAccount', '{{ site.google_analytics_code }}']);
         {% if google_analytics_domain != "" %}
-        _gaq.push(['_setDomainName', '{{ google_analytics_domain }}']);
+        _gaq.push(['_setDomainName', '{{ site.google_analytics_domain }}']);
         {% endif %}
         _gaq.push(['_trackPageview']);
 
