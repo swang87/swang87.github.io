@@ -7,3 +7,5 @@ production_url : http://xiaofei-wang.com/
 baseurl: http://xiaofei-wang.com
 
 auto : false
+google_analytics_code: UA-42671518-1
+google_analytics_domain: xiaofei-wang.com
