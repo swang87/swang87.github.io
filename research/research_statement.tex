@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath, mathtools, bbm, bm}
+\mathtoolsset{showonlyrefs}
+\usepackage{subcaption}
+%\usepackage{natbib}
+\usepackage{hyperref}
+%% THE NEXT TWO LINES INSERT THE PACKAGES FOR JASA FORMAT:
+% \usepackage[default]{jasa_harvard}    %   for formatting citations in text
+% \usepackage{JASA_manu}
+
+%\bibpunct{(}{)}{;}{a}{}{,}
+%% CHANGING THE 'AND' IN THE HARVARD BIBLIOGRAPHY PACKAGE TO WHAT IT OUGHT TO BE
+% \renewcommand{\harvardand}{and}
+\topmargin=-0.5in
+\textheight=9in
+\textwidth=6.5in
+\oddsidemargin=0in
+
+
+\begin{document}
+
+
+\title{Research Statement}
+\author{Xiaofei Wang\\
+Department of Statistics \\ 
+Yale University, New Haven, CT 06510  \\ 
+email: \texttt{xiaofei.wang@yale.edu} }
+
+\maketitle
+I enjoy research that is motivated by real-world problems. While at Yale, my three focuses in research are Bayesian change point analysis, statistical computing, and interdisciplinary research. My primary area of research is on the topic of Bayesian change point analysis, which has many applications in econometrics, environmental sciences, and the biological sciences. In the age of big data, I believe statistical computing is an important topic that helps harness the power of new tools in cloud computing to push the limit of the types of analyses that can be handled with larger and larger datasets. Finally, I enjoy collaborating with researchers in other fields of study; I believe that interdisciplinary research is helpful in keeping statisticians grounded. In the following, I describe each of my research areas.
+
+\section{Bayesian Change Point Analysis} % (fold)
+\label{sec:bayesian_change_point_analysis}
+ Inspired by the New Haven, Connecticut residential property data\footnote{http://data.visionappraisal.com/newhavenct/}, my foray into change point analysis was driven by the question of how to best model real estate values. A naive approach might entail fitting a linear model on say, assessed housing values in year 2011, based on predicting variables of square footage, the number of bathrooms, the number of bedrooms, and lot size. Such an approach proves to be unsatisfactory, because a simple plot of the residuals on a map with longitude on the $x$-axis and latitude on the $y$-axis would show large clusters of positive residuals intermingled with large clusters of negative residuals. These clusters are perhaps explained by an unobserved neighborhood structure. If we define neighborhoods as a group of spatially-nearby observations that follow the same distribution, then neighborhood detection is essentially the same as change point detection. 
+
+ \cite{barry93} gave a Bayesian method for the simple change point problem, where a sequential set of observations $y_1,\dots,y_n$ are assumed to follow normal distributions $N(\theta_i,\sigma^2)$ for $i=1,\dots,n$ and $\theta_i$ are assumed to be constant within contiguous blocks of a partition of the series. I provided four extensions of this methodology in \cite{bcp}. The first extension addresses multivariate serial data, where each $\bm{y_i}$ in the series is $k$-dimensional and is assumed to follow a $N_k(\bm{\theta_i},\sigma^2\bm{I})$ distribution. The second extension considers sequential observations $\{(\bm{x_i},y_i)\}_{i=1}^n$, where the response $y_i$ might be explained by predicting variables $\bm{x_i}$ via a linear model. For all indices $i$ of observations within a given block $S$, we model $y_i\sim N(\bm{\widetilde{x}_{iS}}\bm{\beta_S}, \sigma^2)$. The third and fourth extensions generalize the previous two extensions by assuming the same types of observed data (multivariate and regression data) lie on a general graph structure. 
+
+ The generalized Bayesian change point methodology that allows fitting linear models within blocks can be applied to the New Haven real estate problem described in the beginning of this section. In \cite{bcp}, I used a minimum spanning tree based on house latitudes and longitudes. Using this graph structure, my method yielded posterior estimates of coefficients for each house, accounting for the unobserved neighborhood structure.
+
+ Future work in this area might include broader generalizations of the underlying models, such as considering a more general covariance structure $\Sigma$ as opposed to $\sigma^2\bm{I}$ in the current multivariate extensions. 
+
+ \section{Statistical Computing} % (fold)
+ \label{sec:statistical_computing}
+  Given the growing availability and affordability of cloud computing resources, conducting data analysis efficiently is easier than ever before.  \cite{ec2} and \cite{ec2-b} provide a roadmap for \verb|R| users to harness the power of Amazon's Elastic Compute Cloud (EC2) for performing parallel processing across multiple machines. A good setup has low latency between machines and can make use of shared volumes, which are helpful when the dataset used during computation is large enough where both 1) passing data constantly between machines and 2) keeping separate copies of the dataset on each machine are undesirable.
+ % section statistical_computing (end)
+
+\section{Interdisciplinary Research} % (fold)
+\label{sec:interdisciplinary_research}
+  John W. Tukey once said that a statistician gets ``to play in everyone's backyard.'' I believe that every statistician should play in someone's backyard occasionally in order to stay updated on the types of real world problems that demand statistical solutions. During my stay at Yale University, I had the opportunity to work on several projects with researchers in other departments. Two of these projects led to papers.
+
+  I had the pleasure of working with Professor Stephen Stearns on a genome-wide association study (GWAS) project. In \cite{wang2013genetic}, we examined genetic evidence of the tradeoff between lifetime reproductive success and lifespan using the Framingham Heart Study dataset. We found several single nucleotide polymorphisms (SNPs) that were associated with the relationship between lifetime reproductive success and lifespan.
+
+  I also had an opportunity to work on a project studying the effectiveness of medication on eye pressure \cite{intraoc}. As a retrospective study, we were unable to make statements regarding causality; we were able to discuss the absence or presence of an association between the variables of interest.
+
+\section{Future Work} % (fold)
+\label{sec:future_work}
+  I will continue to work on the three areas of research mentioned above, with particular emphasis on my work in Bayesian change point analysis. There are many classes of problems, such as those in finance, that require more general assumptions than those used in the existing models mentioned above. I plan to work on generalizations of these models to accommodate more general classes of problems. 
+\bibliographystyle{abbrv} 
+\bibliography{refs}
+
+\end{document}

@@ -1,0 +1,39 @@
+\begin{thebibliography}{1}
+
+\bibitem{barry93}
+D.~Barry and J.~A. Hartigan.
+\newblock A {B}ayesian analysis for change point problems.
+\newblock {\em Journal of the American Statistical Association}, 88(421):pp.
+  309--319, 1993.
+
+\bibitem{ec2}
+J.~W. Emerson and X.~Wang.
+\newblock Advances in big data and high-performance computing.
+\newblock In {\em Proceedings of the 2013 IASC Satellite for the ISI WSC and
+  the 8th IASC-ARS Conference}, pages 79--84, August 2013.
+
+\bibitem{ec2-b}
+J.~W. Emerson and X.~Wang.
+\newblock Amazon {EC}2, big data and high-performance computing.
+\newblock {\em Statistical Computing and Graphics Newsletter}, 23(1), July
+  2013.
+
+\bibitem{intraoc}
+J.~Oatts, X.~Wang, N.~Patel, K.~Kaplowitz, and N.~Loewen.
+\newblock Effect of alpha-2-agonist premedication on intraocular pressure after
+  selective laser trabeculoplasty.
+\newblock {\em British Journal of Ophthalmology}, Submitted.
+
+\bibitem{wang2013genetic}
+X.~Wang, S.~G. Byars, and S.~C. Stearns.
+\newblock Genetic links between post-reproductive lifespan and family size in
+  {F}ramingham.
+\newblock {\em Evolution, Medicine, and Public Health}, 2013(1):241--253, 2013.
+
+\bibitem{bcp}
+X.~Wang and J.~W. Emerson.
+\newblock Extensions of {B}ayesian change point analysis.
+\newblock {\em Journal of the American Statistical Association}, To be
+  submitted.
+
+\end{thebibliography}
