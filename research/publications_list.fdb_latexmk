@@ -1,5 +1,13 @@
 # Fdb version 3
-["pdflatex"] 1388350785 "teaching_statement.tex" "teaching_statement.pdf" "teaching_statement" 1388350786
+["bibtex publications_list"] 1388781787 "publications_list.aux" "publications_list.bbl" "publications_list" 1388781813
+  "/usr/local/texlive/2013/texmf-dist/bibtex/bst/base/abbrv.bst" 1292289607 20329 b5fed53e10044d0f8112183785c759b1 ""
+  "publications_list.aux" 1388781812 831 6f5b68dca1f5ca4a73066e5a05b843a3 ""
+  "publications_list.bcf" 0 -1 0 ""
+  "refs.bib" 1388370587 3780 859a8c8f3d3d96d2582b5ae86fb7dc84 ""
+  (generated)
+  "publications_list.blg"
+  "publications_list.bbl"
+["pdflatex"] 1388781812 "publications_list.tex" "publications_list.pdf" "publications_list" 1388781813
   "/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty" 1303254447 8237 52810bdb4db2270e717422560a104aea ""
@@ -36,7 +44,6 @@
   "/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/hyperref.cfg" 1254097189 235 6031e5765137be07eed51a510b2b8fb7 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/mh/mathtools.sty" 1363646010 49646 b5743d63698836f2fd3f3a741a7f7178 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/mh/mhsetup.sty" 1336691608 5175 696879833890ce832e12746d98d0e932 ""
-  "/usr/local/texlive/2013/texmf-dist/tex/latex/natbib/natbib.sty" 1291685959 45456 1c8843383c0bd05870c45fa0ebea6cc2 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/auxhook.sty" 1303254447 3834 707ef09f31d7d2ea47ba89974755dfe0 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty" 1303254447 12029 04d7fdf76e0464c23b5aa3a727952d7c ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/oberdiek/grfext.sty" 1335995445 7075 bd0c34fbf1ae8fd1debd2a554e41b2d5 ""
@@ -46,11 +53,12 @@
   "/usr/local/texlive/2013/texmf-dist/tex/latex/tools/bm.sty" 1254151720 11823 9bcc8ce3d4bd33b432b9fc9543d4666e ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/tools/calc.sty" 1254151720 10075 18f0ccff816231e9905cd2b3a482a622 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/url/url.sty" 1264379145 21932 e3a9cf32ee9b853b42be14c2f25b873c ""
-  "teaching_statement.aux" 1388350786 923 e6aa2edcf920d4867b0bd69c83a24b57 ""
-  "teaching_statement.out" 1388350786 108 fc89809c2074e3961f54d68e82c67d69 ""
-  "teaching_statement.tex" 1388350784 9219 bb101dc51da5ea041934f62fba79fcc1 ""
+  "publications_list.aux" 1388781812 831 6f5b68dca1f5ca4a73066e5a05b843a3 ""
+  "publications_list.bbl" 1388781787 1364 97f5fb6207d0bd5962acb81fff5366df "bibtex publications_list"
+  "publications_list.out" 1388781812 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "publications_list.tex" 1388781810 899 5be42171292439d1704b209a04ffe5ef ""
   (generated)
-  "teaching_statement.aux"
-  "teaching_statement.out"
-  "teaching_statement.log"
-  "teaching_statement.pdf"
+  "publications_list.log"
+  "publications_list.pdf"
+  "publications_list.aux"
+  "publications_list.out"

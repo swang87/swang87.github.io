@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex research_statement"] 1388266486 "research_statement.aux" "research_statement.bbl" "research_statement" 1388266488
+["bibtex research_statement"] 1388370593 "research_statement.aux" "research_statement.bbl" "research_statement" 1388370594
   "/usr/local/texlive/2013/texmf-dist/bibtex/bst/base/abbrv.bst" 1292289607 20329 b5fed53e10044d0f8112183785c759b1 ""
-  "refs.bib" 1388266484 3780 41bcaa6acb6efdc8499e0213040f350a ""
-  "research_statement.aux" 1388266487 1657 2396fe0f884829a7314fe2f3ef52ac62 ""
+  "refs.bib" 1388370587 3780 859a8c8f3d3d96d2582b5ae86fb7dc84 ""
+  "research_statement.aux" 1388370594 1657 09b4ebcdf1709ecfe6ccedd0df3db7f2 ""
   "research_statement.bcf" 0 -1 0 ""
   (generated)
   "research_statement.blg"
   "research_statement.bbl"
-["pdflatex"] 1388266487 "research_statement.tex" "research_statement.pdf" "research_statement" 1388266488
+["pdflatex"] 1388370593 "research_statement.tex" "research_statement.pdf" "research_statement" 1388370594
   "/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/gettitlestring.sty" 1303254447 8237 52810bdb4db2270e717422560a104aea ""
@@ -53,10 +53,10 @@
   "/usr/local/texlive/2013/texmf-dist/tex/latex/tools/bm.sty" 1254151720 11823 9bcc8ce3d4bd33b432b9fc9543d4666e ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/tools/calc.sty" 1254151720 10075 18f0ccff816231e9905cd2b3a482a622 ""
   "/usr/local/texlive/2013/texmf-dist/tex/latex/url/url.sty" 1264379145 21932 e3a9cf32ee9b853b42be14c2f25b873c ""
-  "research_statement.aux" 1388266487 1657 2396fe0f884829a7314fe2f3ef52ac62 ""
-  "research_statement.bbl" 1388266487 1364 2af369839cd4d68a62d2cba7d28f5e2f "bibtex research_statement"
-  "research_statement.out" 1388266487 228 2480245e24cfefc6f03cb638bd20ba30 ""
-  "research_statement.tex" 1388266316 6912 667bfcaa58f36417dae96da280b359be ""
+  "research_statement.aux" 1388370594 1657 09b4ebcdf1709ecfe6ccedd0df3db7f2 ""
+  "research_statement.bbl" 1388370593 1364 97f5fb6207d0bd5962acb81fff5366df "bibtex research_statement"
+  "research_statement.out" 1388370594 228 2480245e24cfefc6f03cb638bd20ba30 ""
+  "research_statement.tex" 1388370537 6898 c1a93127b25607ac5ebb83acde0e12e0 ""
   (generated)
   "research_statement.pdf"
   "research_statement.aux"

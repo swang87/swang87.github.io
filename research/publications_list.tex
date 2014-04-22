@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{endfloat}
+\usepackage{amssymb}
+\usepackage{amsmath, mathtools, bbm, bm}
+\mathtoolsset{showonlyrefs}
+\usepackage{subcaption}
+%\usepackage{natbib}
+\usepackage{hyperref}
+%% THE NEXT TWO LINES INSERT THE PACKAGES FOR JASA FORMAT:
+% \usepackage[default]{jasa_harvard}    %   for formatting citations in text
+% \usepackage{JASA_manu}
+
+%\bibpunct{(}{)}{;}{a}{}{,}
+%% CHANGING THE 'AND' IN THE HARVARD BIBLIOGRAPHY PACKAGE TO WHAT IT OUGHT TO BE
+% \renewcommand{\harvardand}{and}
+\topmargin=-0.5in
+\textheight=9in
+\textwidth=6.5in
+\oddsidemargin=0in
+
+
+\begin{document}
+\renewcommand{\refname}{}
+
+\title{Publication List}
+\author{Xiaofei Wang\\
+Department of Statistics \\ 
+Yale University, New Haven, CT 06510  \\ 
+email: \texttt{xiaofei.wang@yale.edu} }
+
+\maketitle
+
+\bibliographystyle{abbrv} 
+\nocite{*}
+\bibliography{refs}
+
+\end{document}
