@@ -1,0 +1,64 @@
+---
+title: "CPS85 Lab"
+author: "TEAM MEMBER NAMES HERE"
+date: "February 3, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+```
+
+## Instructions
+
+**Important:** Make sure you delete this entire section before you submit your file!
+
+In your groups, tackle the `CPS85` dataset within the `mosaicData` package. You may want to type `?CPS85` and `head(CPS85)` to get a glimpse at what this dataset contains. Next, start exploring the dataset using plots, tables, and other numeric summaries. Select 3 favorite plots and tell a story (in writing) about each of them. Extra brownie points if you can weave the 3 plots together into one cohesive story. You should include at least 1 univariate and 1 bivariate plot. 
+
+## PLOT 1
+
+```{r}
+# put the code for your plot here
+```
+
+(Include the description for your plot here.)
+
+
+## PLOT 2
+
+```{r}
+# put the code for your plot here
+```
+
+(Include the description for your plot here.)
+
+## PLOT 3
+
+```{r}
+# put the code for your plot here
+```
+
+(Include the description for your plot here.)
+
