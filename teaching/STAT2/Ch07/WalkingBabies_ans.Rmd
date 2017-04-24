@@ -1,0 +1,115 @@
+---
+title: "Walking Babies (A Study in Contrasts)"
+author: ""
+date: "Last Updated: July 30, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+require(Stat2Data)
+```
+
+This corresponds to Example 7.10 on p. 341.
+
+## The Data
+
+```{r}
+data("WalkingBabies")
+summary(WalkingBabies)
+```
+
+An experiment was done to see if it would be possible to get babies to learn walking sooner with a set of special exercises. 4 treatment groups were used, detailed on p.342.
+
+* Given the descriptions of the treatment groups, reorder the levels of the `Group` variable in a sensible manner.
+
+SOLUTION:
+
+```{r}
+WalkingBabies <- mutate(WalkingBabies, Group = factor(Group, c("final report",
+                                                               "weekly report",
+                                                               "exercise control",
+                                                               "special exercises")))
+WalkingBabies$Group
+```
+
+## Visualize
+
+* Show a plot comparing age at walking (in months) to treatment group. Describe what you see.
+
+SOLUTION:
+
+```{r}
+bwplot(Age ~ Group, data=WalkingBabies)
+```
+
+* Your textbook describes that there are essentially 3 control groups. Why?
+
+SOLUTION:
+
+## Fit
+
+* Run a one-way ANOVA on the data. Describe what you learn.
+
+SOLUTION:
+
+```{r}
+m1 <- lm(Age ~ Group, data=WalkingBabies)
+summary(m1)
+anova(m1)
+```
+
+## Tests
+
+Is there a difference between the group that received the special exercises and the group that were just told to exercise?
+
+* Run a suitable test to answer this question.
+
+SOLUTION:
+
+```{r}
+with(WalkingBabies, pairwise.t.test(Age, Group, p.adj="none"))
+MSE <- anova(m1)[2,3]
+SE <- sqrt(MSE*(1^2/6 + 1^2/6))
+m <- mean(Age ~ Group, data=WalkingBabies)
+t <- ((m[4]-m[3])-0)/SE
+2*pt(t, df=anova(m1)[2,1])
+```
+
+
+* Does using any exercises give a different mean time to walking relative to no exercises?
+
+SOLUTION:
+
+```{r}
+SE <- sqrt(MSE*(0.5^2/6*4))
+t <- (mean(m[1:2]) - mean(m[3:4])-0)/SE
+2*(1-pt(t, df=anova(m1)[2,1]))
+```
+
+* The textbook says that further inspection of the differences between (combinations of) groups is justified despite a fail to reject at the F-test level. Explain why this discussion is relevant, i.e. why should we be wary of just blindly applying many such tests.
+
+SOLUTION:

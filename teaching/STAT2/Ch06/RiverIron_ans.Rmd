@@ -1,0 +1,137 @@
+---
+title: "River Iron"
+author: ""
+date: "Last Updated: July 28, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This is taken from Example 6.2 on p.283 and Example on p.285. 
+
+## The Data
+
+In this set of examples, researchers investigate how the composition of the water changes as it flows from the source to the mouth of each of four rivers in upstate New York. 
+
+```{r}
+data(RiverIron)
+head(RiverIron)
+```
+
+We're also going to use the `tidyr` package, so let's load that in. 
+
+```{r}
+library(tidyr)
+```
+
+## Exploratory Analysis
+
+* Reproduce the table of `LogIron` amounts for each location in each river (Table 6.6).
+
+SOLUTION:
+
+```{r}
+RiverIron2 <- select(RiverIron, -Iron)
+RiverIron2
+RiverIron2 <- mutate(RiverIron2, 
+                     Site = factor(Site, 
+                                   levels=c("Upstream", "MidStream", "DownStream")))
+spread(RiverIron2, key=River, value=LogIron)
+grandmean <- mean(~ LogIron, data=RiverIron2)
+river_mean <- mean(LogIron ~ River, data=RiverIron2)
+site_mean <- mean(LogIron ~ Site, data=RiverIron2)
+```
+
+* Produce an interaction plot like Figure 6.3. 
+
+SOLUTION:
+
+```{r}
+with(RiverIron2, interaction.plot(Site, River, LogIron))
+```
+
+* What are the conditions necessary for a two-way additive model? What can you conclude from the interaction plot? 
+
+SOLUTION:
+
+
+## Fit and Assess
+
+* Fit the two-way additive model.
+
+SOLUTION:
+
+```{r}
+m1 <- lm(LogIron ~ Site + River, RiverIron2)
+anova(m1)
+```
+
+* Assess the fit of the model by evaluating the assumptions of (1) normal errors and (2) constant variance (Figure 6.4).
+
+SOLUTION:
+
+```{r, fig.keep = 'last'}
+qqmath(~resid(m1))
+ladd(panel.qqmathline(resid(m1)))
+```
+
+```{r}
+xyplot(resid(m1) ~ fitted(m1), type=c("p", "r"))
+```
+
+## Inference
+
+* Show the ANOVA table. What can you conclude? 
+
+SOLUTION:
+
+```{r}
+anova(m1)
+```
+
+* Consider Fisher's LSD. What are the LSD's for the two factors assuming an alpha level of 0.05? Show your calculations.
+
+SOLUTION:
+
+```{r}
+MSE <- anova(m1)[3,3]
+LSD_River <- qt(0.975, 6)*sqrt(2*MSE/4)
+LSD_Site <- qt(0.975, 6)*sqrt(2*MSE/3)
+
+LSD_River
+river_mean
+
+LSD_Site
+site_mean
+```
+
+
+* What can we conclude, bearing in mind the limitations of our dataset?
+
+SOLUTION:

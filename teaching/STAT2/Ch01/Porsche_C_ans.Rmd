@@ -1,0 +1,79 @@
+---
+title: "Porsche Prices (Choose)"
+author: ""
+date: "Last Updated: Jan 24, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This exercise corresponds to Example 1.2 on p.27 of the text.
+
+## Introduction
+
+The dataset description and research question are provided in Example 1.1 on p.25 of the text. Quoted from the text:
+
+> We are interested in predicting the price of a used Porsche based on its mileage, so the explanatory variable is _Mileage_ and the response is _Price_, and both variables are quantitative.
+
+This dataset is stored in the variable called `PorschePrice`. We'll start by loading this into the environment:
+
+```{r}
+data(PorschePrice)
+```
+
+We can peek at the dataset below:
+```{r}
+head(PorschePrice)
+```
+
+Note that both `Price` and `Mileage` are in thousands.
+
+## Scatterplot
+
+As a first step to choosing an appropriate model, produce a scatterplot of the variables of interest:
+
+SOLUTION:
+
+```{r}
+xyplot(Price ~ Mileage, data=PorschePrice)
+```
+
+Describe the relationship seen in the scatterplot above.
+
+SOLUTION:
+
+
+
+What is the form of the model we would like to fit?
+
+SOLUTION:
+
+Price = beta0 + beta1 Mileage + epsilon

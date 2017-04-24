@@ -1,0 +1,173 @@
+---
+title: "Medical School Admissions"
+author: ""
+date: "Last Updated: August 5, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+require(Stat2Data)
+```
+
+This example combines various examples spread throughout Chapter 9, starting with Example 9.4 on p.458.
+
+## The Data
+
+Suppose we'd like to examine how medical school acceptance varies by variables such as GPA, MCAT scores, and gender, where the response variable `Acceptance` is binary, such that 1 is admitted and 0 is not admitted. 
+
+```{r}
+data(MedGPA)
+summary(MedGPA)
+```
+
+## Choose
+
+* Use some plots to explore the relationship between variables `GPA`, `MCAT`, and `Acceptance`. Are the relationships linear? If not, think about why that might be the case and try some possible transformations. 
+
+SOLUTION:
+
+```{r}
+
+```
+
+## Fit
+
+* Just for kicks, fit a linear regression to predict `Acceptance` using `GPA`. 
+
+SOLUTION:
+
+```{r}
+
+```
+
+
+
+
+
+
+In this case, the response variable is binary, so we'll use logistic regression. We will be using generalized linear model `glm()` with the argument `family=binomial`. 
+
+```{r}
+m1 <- glm(Acceptance~GPA, data=MedGPA, family="binomial")
+summary(m1)
+```
+
+* Show a scatterplot with both the linear regression line and the logistic regression. Which model is more appropriate?
+
+SOLUTION:
+
+```{r}
+
+```
+
+* What's the predicted probability of acceptance for someone who has a GPA of 3.6? Calculate directly using the model coefficients and then check your answer using `makeFun()`.
+
+SOLUTION:
+
+```{r}
+
+```
+
+
+* Finish the sentence: An increase in GPA of 0.1 is associated with...
+
+SOLUTION:
+
+
+
+## Assess
+
+### Linearity
+
+Linearity is about how close the fitted curve comes to the data. 
+The logistic regression model assumes that the log(odds) are linearly related to the independent variable. 
+
+We use a empirical logit plot to assess this assumption. 3 simple steps:
+
+1. Group the observations into equal-sized bins of the independent variable. 
+
+We can create such bins by using quantiles. To create 5 bins, we want to know the 0%ile, 20%ile, ..., 100%ile of the data.
+
+```{r}
+q <- quantile(MedGPA$GPA, seq(0, 1, by=0.2))
+q
+```
+
+
+Now I'm going to use the `cut()` function to create a factor for GPA bin, where the bins are bounded by the quantiles given above.
+
+```{r}
+MedGPA2 <- mutate(MedGPA, GPAcut=cut(GPA, breaks=q, include.lowest=TRUE))
+```
+
+* Use a `tally()` to check for the number of accepts within each bin. What do you learn about the relationship between GPA and acceptance rates based on this table?
+
+SOLUTION:
+
+```{r}
+
+```
+
+2. Compute the average $x$-value and empirical logit for each slice.
+
+* Perform the computation first for the unadjusted empirical logit (aka. do not include a fictitious observation as suggested by footnote b on p. 473). What issue do you encounter with the resulting logit?
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Repeat the logit calculation with the adjustment.
+
+SOLUTION:
+
+```{r}
+
+```
+
+3. Use your bin averages and the adjusted logits to construct an empirical logit plot.
+
+* Go ahead and make the plot and then determine if it demonstrates the linearity assumption has been satisfied.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Is GPA significant in predicting the probability of acceptance? Explain using Wald's test, the Wald's interval for the slope, and the likelihood ratio test, all of which are provided to you below.
+
+```{r}
+confint(m1)
+summary(m1)
+anova(m1,test="Chisq")
+```
+
+SOLUTION:
+
+

@@ -1,0 +1,89 @@
+---
+title: "House Prices: Added Variable Plots"
+author: ""
+date: "Last Updated: Feb 22, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This corresponds to Example 4.1 on p. 165 in the textbook.
+
+
+```{r}
+data(Houses)
+```
+
+## The Data
+
+In Example 3.14, house `Price` was modeled using the two correlated predictors `Size` and `Lot` ($r=0.767$). A natural question to ask is, exactly what contribution does `Size` provide after accounting for `Lot`?
+
+## Added Variable Plots (Manual Method)
+
+1. Find the residuals when predicting `Price` without `Size`.
+
+SOLUTION: 
+
+```{r}
+
+```
+
+2. Find the residuals when predicting `Size` using the other predictor `Lot`.
+
+SOLUTION:
+
+```{r}
+
+```
+
+3. Plot the residuals from the first model against the residuals from the second model for the **added variable plot**.
+
+SOLUTION:
+
+```{r}
+
+```
+
+## Added Variable Plots (Using `avPlot()`)
+
+Using the `avPlot()` function in the `car` package (bundled into the `mosaic` package), we can reproduce the plot without going through the 3-step process. Give it a shot:
+
+SOLUTION:
+
+```{r}
+
+```
+
+## Interpretation
+
+What does the added variable plot tell us?
+
+SOLUTION:

@@ -1,0 +1,141 @@
+---
+title: "Ethanol"
+author: ""
+date: "Last Updated: July 28, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+require(Stat2Data)
+```
+
+This file should be used in conjunction with reading the 6.4 Case Study beginning on p.302.
+
+## The Data 
+
+The case study talks about an experiment which studied the inhibiting effect of oxygen on the metabolism of glucose and galactose by Streptococcus bacteria. Four levels of oxyen and two kinds of sugar are present for consideration in the ANOVA. 
+
+```{r}
+data(Ethanol)
+summary(Ethanol)
+```
+
+## Choose
+
+* Visually examine the relationship between O2 concentration and ethanol. Discuss what you learn.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Consider two possible interaction plots for the data. What do you learn from them?
+
+SOLUTION:
+
+```{r}
+
+```
+
+## Fit
+
+* Fit a two-way ANOVA with interaction. Show the ANOVA table. Which of the factors appear significant?
+
+SOLUTION:
+
+```{r}
+
+```
+
+## Assess
+
+* Assess the assumptions of normal residuals and equal variance using graphical methods. What next steps might be suggested?
+
+SOLUTION:
+
+```{r, fig.keep='last'}
+
+
+```
+
+```{r}
+
+```
+
+
+
+
+
+## Back to the Data
+
+It appears we'd want to use some sort of transformation and use oxygen concentration as a quantitative variable. 
+Our goal is to find a transformation that will: 
+
+1. straighten the curved relationship between ethanol and oxygen concentration and
+
+2. make the resulting lines close to parallel so that we can use an additive model with no need for an interaction term. 
+
+Let's start by transforming the response variable `Ethanol`. 
+
+* Use interaction plots to explore the square root, third root, and log base 10 transforms on `Ethanol`.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Which transformation(s) appear(s) to work best?
+
+SOLUTION:
+
+
+* Fit the new model using your favorite transformation(s), without interaction, and discuss the summary output.
+
+SOLUTION:
+
+
+```{r}
+
+```
+
+
+* Assess the model(s) you fit.
+
+```{r, fig.keep='last'}
+
+```
+
+```{r}
+
+```
+
+

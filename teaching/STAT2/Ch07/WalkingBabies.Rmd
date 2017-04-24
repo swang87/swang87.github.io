@@ -1,0 +1,102 @@
+---
+title: "Walking Babies (A Study in Contrasts)"
+author: ""
+date: "Last Updated: July 30, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+require(Stat2Data)
+```
+
+This corresponds to Example 7.10 on p. 341.
+
+## The Data
+
+```{r}
+data("WalkingBabies")
+summary(WalkingBabies)
+```
+
+An experiment was done to see if it would be possible to get babies to learn walking sooner with a set of special exercises. 4 treatment groups were used, detailed on p.342.
+
+* Given the descriptions of the treatment groups, reorder the levels of the `Group` variable in a sensible manner.
+
+SOLUTION:
+
+```{r}
+
+```
+
+## Visualize
+
+* Show a plot comparing age at walking (in months) to treatment group. Describe what you see.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Your textbook describes that there are essentially 3 control groups. Why?
+
+SOLUTION:
+
+## Fit
+
+* Run a one-way ANOVA on the data. Describe what you learn.
+
+SOLUTION:
+
+```{r}
+
+```
+
+## Tests
+
+Is there a difference between the group that received the special exercises and the group that were just told to exercise?
+
+* Run a suitable test to answer this question.
+
+SOLUTION:
+
+```{r}
+
+```
+
+
+* Does using any exercises give a different mean time to walking relative to no exercises?
+
+SOLUTION:
+
+```{r}
+
+```
+
+* The textbook says that further inspection of the differences between (combinations of) groups is justified despite a fail to reject at the F-test level. Explain why this discussion is relevant, i.e. why should we be wary of just blindly applying many such tests.
+
+SOLUTION:

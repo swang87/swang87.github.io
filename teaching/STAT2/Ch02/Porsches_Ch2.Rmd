@@ -1,0 +1,113 @@
+---
+title: "Porsche Prices with Inference"
+author: ""
+date: "Last Updated: Feb 12, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This example is embedded throughout Chapter 2.
+
+```{r}
+data(PorschePrice)
+```
+
+## Introduction
+
+This example was first introduced in Chapter 1 (Example 1.2 on p.27 of the text). We've already fit a simple linear regression model in the [previous exercise](../Ch01/Porsche_F.Rmd) from Chapter 1.
+
+```{r}
+m1 <- lm(Price ~ Mileage, data=PorschePrice)
+summary(m1)
+```
+
+## T-test for Slope
+
+We would like to test whether the population slope for Mileage is different from 0. 
+
+Confirm the t-statistic calculation for slope in the model above.
+
+SOLUTION:
+
+Confirm the p-value calculation for slope in the model, using the `pt()` function.
+
+SOLUTION:
+
+What do you conclude?
+
+SOLUTION:
+
+## Confidence Interval for Slope
+
+A confidence interval for the slope of Mileage gives us a range of credible values for the population slope based on our sample.
+
+What is a 95\% confidence interval for the slope of Mileage?
+
+SOLUTION:
+
+Interpret this confidence interval.
+
+SOLUTION:
+
+## ANOVA Test for Simple Linear Regression
+
+What does the ANOVA test  tell us about the effectiveness of the model?
+
+SOLUTION:
+
+## R-squared
+
+Confirm the calculation of $R^2$ using the ANOVA table.
+
+SOLUTION:
+
+What is the interpretation of $R^2$ in this setting?
+
+SOLUTION:
+
+## Intervals for Predictions
+
+Suppose that we are interested in a used Porsche with 50 thousand miles, namely `Mileage=50`. Produce the predicted price for this Porsche.
+
+SOLUTION:
+
+Give a 90\% confidence interval for the mean price of Porsches having 50 thousand miles.
+
+SOLUTION:
+
+Give a 90\% prediction interval for the price of a randomly selected Porsche having 50 thousand miles.
+
+SOLUTION:
+
+Produce a scatterplot that shows both 95\% confidence and prediction bands.
+
+SOLUTION:

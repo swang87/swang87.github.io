@@ -1,0 +1,61 @@
+---
+title: "Butterfly Ballot (Choose)"
+author: ""
+date: "Last Updated: Feb 5, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This exercise corresponds to Example 1.9 beginning on p.49 of the text.
+
+```{r}
+data(PalmBeach)
+```
+
+## Introduction
+
+In this example, we revisit Election 2000, where Palm Beach County (where Prof. Wang was living at the time!) used a nonstandard ballot. Critics claimed that people accidentally voted for Buchanan when they intended to vote for someone else. To investigate this problem, we'll look at a model predicting the number of votes for Buchanan using the number of votes for Bush across all Florida counties. 
+
+## Scatterplot
+
+Plot the relationship between `Buchanan` and `Bush` (Figure 1.23). Highlight Palm Beach County using a different color.
+
+SOLUTION:
+
+```{r}
+xyplot(Buchanan ~ Bush, data=PalmBeach)
+head(PalmBeach)
+xyplot(Buchanan ~ Bush, data=PalmBeach, col=1+(PalmBeach$County == "PALM BEACH"))
+ 
+```
+
+

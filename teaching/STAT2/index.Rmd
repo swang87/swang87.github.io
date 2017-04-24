@@ -1,0 +1,119 @@
+---
+title: "STAT2: Building Models for a World of Data"
+author: "Examples in R"
+date: "Last Updated: August 26, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+```
+
+---
+
+## What's This?
+
+This site provides a compilation of examples from the STAT2 textbook by Cannon et al. using RMarkdown. There are videos for the selected examples demonstrating how the graphs and analysis could be done in R. There are also Markdown scripts that might be used to attempt these examples on your own. 
+
+Note that the videos/Markdown files are meant to supplement the examples in the textbook.
+
+In order to use the Markdown files here, you will need to install the `Stat2Data` package by typing:
+
+```{r, eval=FALSE}
+install.packages("Stat2Data")
+```
+
+We'll also be using the `mosaic` package (see [Project MOSAIC](http://mosaic-web.org/)), which is pre-installed for you at the Amherst R Server.
+
+--- 
+
+## Chapter 1
+| Example | Choose | Fit | Assess | Use |
+|---------|--------|-----|--------|-----|
+| Porsche Prices | [Rmd](Ch01/Porsche_C.Rmd) . [HTML](Ch01/Porsche_C.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGRTNvbmRmMlgwRk0/view?usp=sharing) | [Rmd](Ch01/Porsche_F.Rmd) . [HTML](Ch01/Porsche_F.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGTHViZDhfSlNUZW8/view?usp=sharing) | [Rmd](Ch01/Porsche_A.Rmd) . [HTML](Ch01/Porsche_A.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGUjE2XzAxWXdCRFU/view?usp=sharing) | [Rmd](Ch01/Porsche_U.Rmd) . [HTML](Ch01/Porsche_U.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGcUN6M1NIaU9BbTQ/view?usp=sharing) | 
+| Doctors and Hospitals I | [Rmd](Ch01/MDs_C.Rmd) . [HTML](Ch01/MDs_C.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGQlM3NWNGZU1pY3c/view?usp=sharing) | [Rmd](Ch01/MDs_F.Rmd) . [HTML](Ch01/MDs_F.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGaEVzcklxSTg5NDQ/view?usp=sharing) | [Rmd](Ch01/MDs_A.Rmd) . [HTML](https://drive.google.com/file/d/0Bx-JFsCajEMGVzF5RUdCRXNSQ3c/view?usp=sharing) |  | 
+| Doctors and Hospitals II | [Rmd](Ch01/MDs2_C.Rmd) . [HTML](Ch01/MDs2_C.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGV0NjcTIyS2lGQUk/view?usp=sharing) | [Rmd](Ch01/MDs2_F.Rmd) . [HTML](Ch01/MDs2_F.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGelVNWW1zZ2pwS0U/view?usp=sharing) | [Rmd](Ch01/MDs2_A.Rmd) . [HTML](Ch01/MDs2_A.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGOHpFM1RZRk9rdW8/view?usp=sharing) | [Rmd](Ch01/MDs2_U.Rmd) . [HTML](Ch01/MDs2_U.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGdnFqNjF3eDBrUkk/view?usp=sharing) | 
+| Butterfly Ballot | [Rmd](Ch01/Ballot2000_C.Rmd) . [HTML](Ch01/Ballot2000_C.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGVTdyRXhkTGdwUUE/view?usp=sharing) | [Rmd](Ch01/Ballot2000_F.Rmd) . [HTML](Ch01/Ballot2000_F.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGZzVycVRzLTBZbkU/view?usp=sharing) |  |  | 
+
+## Chapter 2
+| Example | Links |
+|---------|-------|
+| Porsche Cars| [Rmd](Ch02/Porsches_Ch2.Rmd) . [HTML](Ch02/Porsches_Ch2.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGMTRFS084LXRsT00/view?usp=sharing)|
+
+## Chapter 3
+
+| Example | Links |
+|---------|-------|
+| NFL Wins| [Rmd](Ch03/NFLWins.Rmd) . [HTML](Ch03/NFLWins.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGZVppX1Ric2xVLTA/view?usp=sharing)|
+| Perch Weights| [Rmd](Ch03/PerchWeights.Rmd) . [HTML](Ch03/PerchWeights.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGSElwSmF2UnRjWFU/view?usp=sharing)|
+
+
+## Chapter 4
+
+| Example | Links |
+|---------|-------|
+| House Prices | [Rmd](Ch04/HousePrices_avP.Rmd) . [HTML](Ch04/HousePrices_avP.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGNGFaY29DMU5NRHM/view?usp=sharing) |
+| First Year GPA | [Rmd](Ch04/GPA_ModelSel.Rmd) . [HTML](Ch04/GPA_ModelSel.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGdzhnSlRncExBb2c/view?usp=sharing) |
+| Butterfly Ballots | [Rmd](Ch04/Election2000_Outliers.Rmd) . [HTML](Ch04/Election2000_Outliers.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGOXdPcGVsZHpFc28/view?usp=sharing) |
+
+## Chapter 5
+
+| Example | Links |
+|---------|-------|
+| Fruitflies (Part 1) | [Rmd](Ch05/Fruitflies1.Rmd) . [HTML](Ch05/Fruitflies1.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGMUpaZGV4R2d5Y3c) |
+| Diamonds | [Rmd](Ch05/Diamonds.Rmd) . [HTML](Ch05/Diamonds.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGNWV3NDNKRVdBd1U) |
+| Cancer Survival | [Rmd](Ch05/CancerSurvival.Rmd) . [HTML](Ch05/CancerSurvival.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGUEktVFN5b2pqNU0) |
+| Hawks | [Rmd](Ch05/Hawks.Rmd) . [HTML](Ch05/Hawks.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGOXRfUU9PalRjdW8) |
+| Fruitflies (Part 2) | [Rmd](Ch05/Fruitflies2.Rmd) . [HTML](Ch05/Fruitflies2.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGRExnTjRXeEo5Mmc) |
+
+## Chapter 6
+
+| Example | Links |
+|---------|-------|
+| River Iron | [Rmd](Ch06/RiverIron.Rmd) . [HTML](Ch06/RiverIron.html) . [Video](https://drive.google.com/file/d/0Bx-JFsCajEMGVGtuQjQtenBMVGs) |
+| Pig Feed | [Rmd](Ch06/PigFeed.Rmd) . [HTML](Ch06/PigFeed.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGUGdYc21qMFIydE0) |
+| Ethanol | [Rmd](Ch06/Ethanol.Rmd) . [HTML](Ch06/Ethanol.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGOHBScmlFTHppb3c) |
+
+
+## Chapter 7
+
+| Example | Links |
+|---------|-------|
+| Fruitflies | [Rmd](Ch07/Fruitflies.Rmd) . [HTML](Ch07/Fruitflies.html) . [Video (Part 1)](https://drive.google.com/open?id=0Bx-JFsCajEMGZTRGbjVscmNSWnM) . [Video (Part 2)](https://drive.google.com/open?id=0Bx-JFsCajEMGNF9SN3JJWl9QS0k) |
+| Sandwich Ants | [Rmd](Ch07/SandwichAnts.Rmd) . [HTML](Ch07/SandwichAnts.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGY0J1ZXc0ZzM1MlE) |
+| Walking Babies | [Rmd](Ch07/WalkingBabies.Rmd) . [HTML](Ch07/WalkingBabies.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGOXM5bEktLXFtNjg) |
+
+## Chapter 9
+
+| Example | Links |
+|---------|-------|
+| Medical School GPA | [Rmd](Ch09/MedSchool.Rmd) . [HTML](Ch09/MedSchool.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGSnVUVWZIbGRFeDQ) |
+| Golfing | [Rmd](Ch09/Putts.Rmd) . [HTML](Ch09/Putts.html) . [Video](https://drive.google.com/open?id=0Bx-JFsCajEMGMG85WjF5TjdNdFU) |
+
+## Credits
+
+Thanks to Pei Gong '18 for contributing the Markdown files for Chapter 5 onwards. 
+
+Thanks to [Project MOSAIC](http://mosaic-web.org/) for generously supporting the production of these videos.

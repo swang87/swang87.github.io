@@ -1,0 +1,97 @@
+---
+title: "Pig Feed"
+author: ""
+date: "Last Updated: July 28, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+require(Stat2Data)
+```
+
+This is taken from Example 6.4 on p.287. 
+
+## The Data
+
+What factor(s) play in a role in weight gain for pigs? Here we consider the roles of antibiotics and vitamin B12.
+
+```{r}
+data(PigFeed)
+summary(PigFeed)
+```
+
+Let's start by examining the average weight gain for each diet, which is identified by whether or not antibiotics (Factor A) and/or vitamin B12 (Factor B) is/are present.
+
+* Show the table of averages across each combination of the two factors, as in the right side-table in Table 6.7.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Compute the differences in mean weight gain due to B12 (values in second table on p. 288).
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Compute the differences in mean weight gain due to antibiotics (values in third table on p. 288).
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Produce two possible interaction plots for these data. Which one is easier to read?
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Challenge: What's happening in Figure 6.7? How did the data points come about? Generate the numbers that would be used in these two plots.
+
+SOLUTION: 
+
+```{r}
+
+```
+
+* Which of the two models appears more appropriate? Two-way additive or two-way with interaction?
+
+SOLUTION:
+
+```{r}
+
+```
+

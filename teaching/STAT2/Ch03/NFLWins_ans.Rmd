@@ -1,0 +1,137 @@
+---
+title: "NFL Winning Percentage"
+author: ""
+date: "Last Updated: Feb 14, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This example is embedded throughout Sections 3.1 and 3.2. See the background information in Example 3.1 on p.95.
+
+```{r}
+data(NFL2007Standings)
+```
+
+## Introduction
+
+We'd like to model `WinPct` using the other available information. 
+
+* Show scatterplots of `WinPct` against `PointsFor` and `WinPct` against `PointsAgainst` (Fig. 3.1).
+
+SOLUTION:
+
+```{r}
+xyplot(WinPct ~ PointsFor, data=NFL2007Standings, type=c("p", "r"))
+xyplot(WinPct ~ PointsAgainst, data=NFL2007Standings, type=c("p", "r"))
+```
+
+
+* Which of the two variables is a more effective predictor of winning percentage for these data?
+
+SOLUTION:
+
+```{r}
+cor(WinPct ~ PointsFor, data=NFL2007Standings)
+cor(WinPct ~ PointsAgainst, data=NFL2007Standings)
+```
+
+
+* Consider a regression that includes both of the predictors. Write out the fitted equation.
+
+SOLUTION:
+
+```{r}
+m1 <- lm(WinPct ~ PointsFor + PointsAgainst, data=NFL2007Standings)
+summary(m1)
+```
+
+$$\widehat{WinPct} = 0.417 + 0.002 PointsFor - 0.002 PointsAgainst$$
+
+
+* Consider the Pittsburgh Steelers, who scored 393 points while allowing 260 points during the 2007 season. What is the predicted winning percentage based on the model?
+
+SOLUTION:
+
+```{r}
+pred1 <- makeFun(m1)
+pred1(PointsFor=393, PointsAgainst=260)
+```
+
+
+
+
+* What is the associated residual? The Steelers' record showed a winning percentage of 0.625.
+
+SOLUTION:
+
+```{r}
+0.625 - 0.714
+```
+
+
+* What is the **standard error of the multiple regression model**?
+
+SOLUTION:
+
+* Test the significance of the `PointsAgainst` predictor in the multiple regression model.
+
+SOLUTION:
+
+* Produce a 95% confidence interval for the size of the average improvement in winning percentage for every extra point scored during a season.
+
+SOLUTION:
+
+```{r}
+qt(0.975, 29)
+0.001766 + 2.045*0.000187
+0.001766 - 2.045*0.000187
+
+```
+
+
+* Verify the calculation of $R^2$ by using a correlation calculation.
+
+SOLUTION:
+
+```{r}
+cor(fitted(m1), NFL2007Standings$WinPct)^2
+```
+
+
+* Suppose an NFL team in the upcoming season scores 400 points and allows 350 points. Compute a 95% prediction interval for this team's `WinPct`.
+
+SOLUTION:
+
+```{r}
+pred1(PointsFor=400, PointsAgainst=350, int="prediction", level=0.95)
+```
+

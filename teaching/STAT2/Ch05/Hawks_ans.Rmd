@@ -1,0 +1,86 @@
+---
+title: "Hawks"
+author: ""
+date: "Last Updated: July 21, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This corresponds to Example 5.9 on p. 247.
+
+### The Data 
+
+Data are collected by researchers at Cornell on random samples of three different species of hawks: red-tailed,sharp-shinned, and Cooper's hawks. We are interested in the tail lengths of these birds and how they might vary between different species.  
+
+```{r}
+data(Hawks)
+head(Hawks)
+```
+
+### Fit
+
+* Calculate group means and the grand mean. Then calculate the treatment effects for the one-way ANOVA model.
+
+SOLUTION:
+
+```{r}
+favstats(Tail ~ Species, data=Hawks)
+mean(~Tail, data=Hawks)
+
+mean(Tail ~ Species, data=Hawks) - mean(~Tail, data=Hawks)
+```
+
+* Fit the model.
+
+SOLUTION:
+
+```{r}
+m1 <- lm(Tail~Species,data=Hawks)
+```
+
+
+### Assess
+
+* Check the conditions for the model.
+
+SOLUTION:
+
+```{r, fig.keep='last'}
+xyplot(resid(m1)~fitted(m1))
+```
+
+```{r, fig.keep='last'}
+qqmath(~resid(m1))
+ladd(panel.qqmathline(resid(m1)))
+```
+
+* What can we conclude?
+
+SOLUTION:

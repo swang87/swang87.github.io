@@ -1,0 +1,75 @@
+---
+title: "Ants on Sandwiches"
+author: ""
+date: "Last Updated: July 29, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+require(Stat2Data)
+```
+
+This is taken from Example 7.16 in the book on p.364.
+
+## The Data
+
+```{r}
+data(SandwichAnts)
+summary(SandwichAnts)
+```
+
+We would like to use this dataset to explore the similarities between linear regression (with indicators) and two-way ANOVA. 
+
+* Calculate the mean numbers of ants on sandwiches as presented in Table 7.2.
+
+SOLUTION:
+
+```{r}
+library(tidyr)
+SandwichAnts %>% group_by(Bread, Filling) %>% 
+                 summarize(m = mean(Ants)) %>%
+                 spread(key=Bread, value=m)
+```
+
+## Analysis
+
+* Perform a two way ANOVA with interaction effects using the two variables, `Filling` and `Bread`. What do you conclude?
+
+SOLUTION:
+
+```{r}
+m1 <- lm(Ants ~ Bread * Filling, data=SandwichAnts)
+anova(m1)
+```
+
+* Compare what you learn from the ANOVA table to what you learn from the linear regression summary.
+
+SOLUTION:
+
+```{r}
+summary(m1)
+```

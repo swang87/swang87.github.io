@@ -1,0 +1,104 @@
+---
+title: "Author with a club"
+author: ""
+date: "Last Updated: August 5, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+require(Stat2Data)
+```
+
+This is adapted from Examples 9.10 (p. 469) and 9.16 (p. 485) of the book. 
+
+## The Data
+
+In this example, we consider the rate of success on the golf course as a function of the length of the putt. 
+
+```{r}
+data(Putts1)
+summary(Putts1)
+```
+
+## Choose and Fit
+
+We'd like to begin by constructing an empirical logit plot to assess whether a logistic regression model would be appropriate.
+
+* Replicate the empirical logits in Table 9.5 in preparation for making the plot.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Make the empirical logit plot based on these numbers.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Replicate the table on the bottom of p. 469. What does this table aim to achieve?
+
+SOLUTION:
+
+```{r}
+
+
+```
+
+
+## Assess and Use
+
+* Display and interpret the model summary for your logistic regression model.
+
+SOLUTION:
+
+```{r}
+
+
+```
+
+* Calculate the likelihood test statistic based on the summary table. Compare it to a chi-square distribution with appropriate degree of freedom. What do you conclude?
+
+SOLUTION: 
+
+```{r}
+
+```
+
+
+* Confirm that the `anova()` calculation matches what you found above.
+
+SOLUTION: 
+
+```{r}
+
+```
+

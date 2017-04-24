@@ -1,0 +1,127 @@
+---
+title: "Perch Weights"
+author: ""
+date: "Last Updated: Feb 15, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This example is embedded throughout Sections 3.4 to 3.6. See the background information in Example 3.10 on p.118.
+
+```{r}
+data(Perch)
+```
+
+### Introduction
+
+We'd like to model `Weight` using the other available information. 
+
+```{r}
+head(Perch, 7)
+```
+
+### Choose
+
+We might imagine that weight is proportional to the area of the fish, which we can roughly approximate using `Length` times `Width`.
+
+### Fit
+
+* Fit a model that includes `Length`, `Width`, and `Length` times `Width` as an interaction.
+
+SOLUTION:
+
+```{r}
+m1 <- lm(Weight ~ Length*Width, data=Perch)
+summary(m1)
+m1a <- lm(Weight ~ Length + Width + Length:Width, data=Perch)
+summary(m1a)
+```
+
+
+### Assess
+
+* The `Length` predictor does not appear to be significant in the model. Should we remove it?
+
+SOLUTION:
+
+* Look at a residual versus fitted value plot of this model and discuss what you see.
+
+SOLUTION:
+
+```{r}
+xyplot(resid(m1) ~ fitted(m1), type=c("p", "r"))
+```
+
+
+### Fit (Again)
+
+* Now fit a complete second-order model for the weights of the perch  using the same two variables.
+
+SOLUTION:
+
+```{r}
+m2 <- lm(Weight ~ Length*Width + I(Length^2) + I(Width^2), data=Perch)
+summary(m2)
+```
+
+
+### Assess (Again)
+
+* How does this new model compare to the model without quadratic terms?
+
+SOLUTION:
+
+### Collinearity
+
+* Consider a smaller model with only the linear terms of `Length` and `Width`, with no interaction term. Compare the coefficients of this model to the model that has an interaction term.
+
+SOLUTION:
+
+```{r}
+m0 <- lm(Weight ~ Length + Width, data=Perch)
+summary(m0)
+summary(m1)
+```
+
+
+
+### Nested F-Test
+
+* Compare the complete second-order model to the original model with an interaction between `Length` and `Width` using an F-test. What do you conclude?
+
+SOLUTION:
+
+```{r}
+summary(m2)
+anova(m1, m2)
+```
+

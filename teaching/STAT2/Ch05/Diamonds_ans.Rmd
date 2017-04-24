@@ -1,0 +1,125 @@
+---
+title: "Diamonds"
+author: ""
+date: "Last Updated: July 21, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This corresponds to Example 5.7 on p.238.
+
+```{r}
+data(Diamonds2)
+```
+
+### The Data
+
+We've all heard of the 4 C's for diamonds -- cut, color, clarity, and carat. These four jointly determine the price of a diamond and our dataset contains 307 diamonds with these variables recorded.
+
+```{r}
+summary(Diamonds2)
+```
+
+### Fit
+
+A buyer may be interested in knowing if a particular color of diamond is associated with more or fewer carats. 
+
+* Replicate the information in the table on the bottom of p. 238. 
+
+SOLUTION:
+
+```{r}
+favstats(Carat~Color,data=Diamonds2)  
+favstats(~Carat,data=Diamonds2)
+```
+
+
+* Compute the treatment effects. 
+
+SOLUTION:
+
+```{r}
+mean(Carat~Color,data=Diamonds2) - mean(~Carat, data=Diamonds2)
+```
+
+### Assess
+
+* Check the conditions for the model. Produce a plot that illustrates the amount of variability between groups. (Figure 5.5)
+
+SOLUTION:
+
+```{r}
+m1 <- lm(Carat~Color,data=Diamonds2)
+xyplot(resid(m1)~fitted(m1), type=c("p", "r"))
+```
+
+* Produce a normal quantile plot of residuals (similar to Figure 5.6(a)).
+
+SOLUTION:
+
+```{r, fig.keep = 'last'}
+qqmath(~resid(m1))
+ladd(panel.qqmathline(resid(m1)))
+```
+
+* Produce side-by-side histograms (similar to Figure 5.6(b)) showing the distribution of carat within each category of color.
+
+```{r}
+histogram(~ Carat | Color,data=Diamonds2)
+```
+
+* Does the model satisfy the assumptions? If not, what is one possible transformation? 
+
+SOLUTION: 
+
+* Recheck the model assumptions on the transformed data.
+
+SOLUTION:
+
+```{r}
+m2 <- lm(log(Carat) ~ Color, data=Diamonds2)
+xyplot(resid(m2) ~ fitted(m2))
+```
+
+```{r, fig.keep = 'last'}
+qqmath(~resid(m2))
+ladd(panel.qqmathline(resid(m2)))
+```
+
+
+
+* Is there a difference among the means of the (possibly transformed) number of carats based on the color of the diamonds?
+
+SOLUTION:
+
+```{r}
+anova(m2)
+```

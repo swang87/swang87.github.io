@@ -1,0 +1,59 @@
+---
+title: "Doctors and Hospitals I (Fit)"
+author: ""
+date: "Last Updated: Jan 27, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This exercise corresponds to Example 1.6 on p.39 of the text.
+
+```{r}
+data(MetroHealth83)
+```
+
+## Recap
+
+In the Choose step, we've discovered a positive association between `NumMDs` and `NumHospitals`, although the association may not be linear. We'll proceed to fit a linear model anyway to see how unmet assumptions are manifested in the diagnostic plots (in the Assess step).
+
+
+## Fit the Model
+
+Go ahead and fit the model using the `lm()` function and look at the model parameter estimates using `summary()`.
+
+SOLUTION:
+
+```{r}
+m1 <- lm(NumMDs ~ NumHospitals, data=MetroHealth83)
+summary(m1)
+```
+

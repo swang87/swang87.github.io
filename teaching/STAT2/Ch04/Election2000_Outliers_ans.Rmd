@@ -1,0 +1,100 @@
+---
+title: "Election 2000: Unusual Points"
+author: ""
+date: "Last Updated: Feb 22, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This corresponds to Example 4.3 on p. 180 and Example 4.5 on p. 184.
+
+
+```{r}
+data(PalmBeach)
+```
+
+## The Data
+
+Previously in Example 1.9 on p. 49, we looked at a model using Bush votes to predict Buchanan votes in Florida counties. You'll recall we identified quite a few unusual observations.
+
+```{r}
+m1 <- lm(Buchanan ~ Bush, data=PalmBeach)
+summary(m1)
+xyplot(Buchanan ~ Bush, data=PalmBeach, type=c("p", "r"))
+```
+
+## Leverage
+
+Suppose we go with the "three times typical" rule. What should the cutoff be for identifying high leverage points?
+
+SOLUTION:
+
+```{r}
+3*2/67
+```
+
+
+Identify these observations in the dataset.
+
+SOLUTION:
+
+```{r}
+ls.diag(m1)$hat
+hatvalues(m1)
+PalmBeach <- mutate(PalmBeach, lev=hatvalues(m1))
+filter(PalmBeach, hatvalues(m1) > 3*2/67)
+```
+
+## Standardized and Studentized Residuals
+
+Identify all observations which either have high leverage or high standardized/studentized residuals based on the "three times typical" rule.
+
+SOLUTION:
+
+```{r}
+PalmBeach <- mutate(PalmBeach, std=rstandard(m1), stud=rstudent(m1))
+filter(PalmBeach, hatvalues(m1) > 3*2/67 | abs(std) > 3 | abs(stud) > 3)
+```
+
+## Cook's Distance
+
+Show Cook's distance for Palm Beach County, Dade County, and Orange County.
+
+SOLUTION:
+
+```{r}
+PalmBeach <- mutate(PalmBeach, cook=cooks.distance(m1))
+filter(PalmBeach, County %in% c("PALM BEACH", "DADE", "ORANGE"))
+```
+
+
+

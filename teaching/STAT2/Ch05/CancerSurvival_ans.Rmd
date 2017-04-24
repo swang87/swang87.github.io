@@ -1,0 +1,119 @@
+---
+title: "Cancer Survivability"
+author: ""
+date: "Last Updated: July 21, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+require(Stat2Data)
+```
+
+This corresponds to Example 5.8 starting on p.243.
+
+### The Data
+
+```{r}
+data(CancerSurvival)
+head(CancerSurvival)
+```
+
+We'd like to consider whether the effect of ascorbate differs between which organs were affected by cancer. What model should we use?
+
+### Fit 
+
+* Provide a table of summary statistics for survival time broken down by each type of organ. Also, compute the group effects.
+
+SOLUTION:
+
+```{r}
+favstats(Survival ~ Organ, data = CancerSurvival)
+mean(~Survival, data = CancerSurvival)
+mean(Survival ~ Organ, data = CancerSurvival) - 
+     mean(~ Survival, data = CancerSurvival)
+```
+
+* Fit the ANOVA model.
+
+SOLUTION:
+
+```{r}
+m1 <- lm(Survival ~ Organ, data=CancerSurvival)
+anova(m1)
+```
+
+### Assess & Use
+
+* Check the assumption constant variance condition both numerically and graphically.
+
+SOLUTION:
+
+```{r}
+sds <- sd(Survival ~ Organ, data=CancerSurvival)
+max(sds)/min(sds)
+
+xyplot(resid(m1) ~ fitted(m1), data=CancerSurvival)
+```
+
+* Check the normality assumption via a normal quantile plot.
+
+```{r, fig.keep = 'last'}
+qqmath(~resid(m1))
+ladd(panel.qqmathline(resid(m1)))
+```
+
+* Does the model satisfy the necessary conditions for the ANOVA model? If not, consider possible transformations to resolve these issues and re-assess the new model.
+
+SOLUTION: 
+
+```{r}
+m2 <- lm(log(Survival)~Organ, data=CancerSurvival)
+favstats(log(Survival) ~ Organ, data=CancerSurvival)
+mean(log(Survival) ~ Organ, data=CancerSurvival) - 
+  mean(log(Survival), data=CancerSurvival)
+
+sds <- sd(log(Survival)~Organ,data=CancerSurvival)
+max(sds)/min(sds)
+
+xyplot(resid(m2)~fitted(m2),data=CancerSurvival)
+```
+
+```{r, fig.keep='last'}
+qqmath(~resid(m2))
+ladd(panel.qqmathline(resid(m2)))
+```
+
+
+* Report the ANOVA table. What conclusions can we make?
+
+SOLUTION:
+
+```{r}
+anova(m2)
+```
+

@@ -1,0 +1,63 @@
+---
+title: "Butterfly Ballot (Fit)"
+author: ""
+date: "Last Updated: Feb 5, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This exercise corresponds to Example 1.9 beginning on p.49 of the text.
+
+```{r}
+data(PalmBeach)
+```
+
+## Recap
+
+Although there are a few outliers in the scatterplot of `Bush` against `Buchanan`, a simple linear regression still appears to be appropriate. 
+
+## Fit the Model
+
+Fit the linear model using all data points. Display the model summary.
+
+SOLUTION:
+
+
+Fit the linear model excluding Palm Beach County. Display the model summary.
+
+SOLUTION:
+
+
+Display both regression lines on a scatterplot with all counties. 
+
+SOLUTION:
+

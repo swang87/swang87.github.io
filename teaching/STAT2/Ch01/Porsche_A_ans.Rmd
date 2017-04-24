@@ -1,0 +1,108 @@
+---
+title: "Porsche Prices (Assess)"
+author: ""
+date: "Last Updated: Jan 24, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This exercise corresponds to the first part of Example 1.5 on p.36 of the text.
+
+```{r}
+data(PorschePrice)
+```
+
+## Objective
+We would like to assess the model previously fit to the dataset `PorschePrice`:
+
+```{r}
+lm0 <- lm(Price ~ Mileage, data=PorschePrice)
+summary(lm0)
+```
+
+
+## Graphs
+We'll start by producing the 3 graphs that will enable us to answer this question.
+
+### A. Residual vs. Fitted Value
+
+Produce the scatterplot of residual versus fitted values.
+
+SOLUTION:
+
+```{r}
+xyplot(residuals(lm0) ~ fitted(lm0), type=c("p", "r"))
+```
+
+### B. Histogram of Residuals
+
+Produce a histogram of the residuals.
+
+SOLUTION:
+
+```{r}
+histogram( ~ residuals(lm0), width=5)
+```
+
+### C. Normal Quantile Plot of Residuals
+
+Produce a normal quantile plot of the residuals.
+
+SOLUTION:
+
+```{r}
+qqmath( ~ residuals(lm0))
+```
+
+## Assessment
+
+For each of the conditions below, describe whether each is met or not met, and cite the specific plot(s) above to support your argument, if appropriate.
+
+### 1. Linearity
+
+SOLUTION:
+
+### 2. Zero mean
+
+SOLUTION:
+
+### 3. Constant variance
+
+SOLUTION:
+
+### 4. Independence and Random
+
+SOLUTION:
+
+### 5. Normality
+
+SOLUTION:

@@ -1,0 +1,98 @@
+---
+title: "Porsche Prices (Fit)"
+author: ""
+date: "Last Updated: Jan 24, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This exercise corresponds to Example 1.3 on p.29 and Example 1.4 on p.32 of the text.
+
+```{r}
+data(PorschePrice)
+```
+
+## Objective
+Recall that we would like to fit the following model to the dataset `PorschePrice`:
+
+$$Price = \beta_0 + \beta_1 Mileage + \epsilon$$
+
+## Fitting the Model
+Use the `lm()` function to fit this model and the `summary()` function to view the model summary.
+
+SOLUTION:
+```{r}
+lm0 <- lm(Price ~ Mileage, data=PorschePrice)
+summary(lm0)
+```
+
+Interpret the coefficients. (Be careful with units!)
+
+SOLUTION:
+
+
+## Make a Prediction
+Car 1 had a mileage level of 21.5 and a price of 69.4 (thousand dollars). Calculate the residual for this car from the model.
+
+SOLUTION:
+
+```{r}
+head(PorschePrice)
+fitted(lm0)[1]
+69.4 - fitted(lm0)[1]
+
+residuals(lm0)[1]
+```
+
+## Residual Standard Error
+
+What is the **sum of squared residuals** (SSE) from the model? 
+
+SOLUTION:
+
+```{r}
+sum(residuals(lm0)^2)
+```
+
+What is the residual standard error from the model? Confirm the calculation using the formula containing SSE:
+
+SOLUTION:
+
+```{r}
+summary(lm0)$s
+sqrt(sum(residuals(lm0)^2)/(30-2))
+```
+
+Interpret the residual standard error in the context of the problem.
+
+SOLUTION:
+

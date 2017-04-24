@@ -1,0 +1,59 @@
+---
+title: "Fruitflies (Part 2)"
+author: ""
+date: "Last Updated: July 21, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This corresponds to the last Fruitfly example, Example 5.11 on p. 255.
+
+## The Data
+
+In this chapter, we explore how reproductive behavior affects longevity in fruit flies. The data are loaded below:
+
+```{r}
+data(FruitFlies)
+```
+
+
+
+### Example 5.11
+
+Having rejected the null hypothesis, we conclude that there is at least one group that has a group mean significantly different from the others. We'd want to figure out which, specifically, the differing group(s) is/are. 
+
+
+* Use Fisher's LSD to do all the pairwise comparisons. What do you conclude at the alpha = 0.05 level?
+
+SOLUTION:
+
+```{r}
+
+```

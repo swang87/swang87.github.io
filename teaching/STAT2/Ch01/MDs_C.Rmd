@@ -1,0 +1,71 @@
+---
+title: "Doctors and Hospitals I (Choose)"
+author: ""
+date: "Last Updated: Jan 27, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This exercise corresponds to Example 1.6 on p.39 of the text.
+
+## Introduction
+
+This dataset is stored in the variable called `MetroHealth83`. We'll start by loading this into the environment:
+
+```{r}
+data(MetroHealth83)
+head(MetroHealth83)
+```
+
+There are a lot of variables, but we're interested in only 2 of them. Our goal is to try to predict the number of MDs `NumMDs` from the number of hospitals `NumHospitals`.
+
+
+## Scatterplot
+
+As a first step to choosing an appropriate model, produce a scatterplot of the variables of interest:
+
+SOLUTION:
+
+```{r}
+
+```
+
+Describe the relationship seen in the scatterplot above.
+
+SOLUTION:
+
+
+
+Should we fit a linear model? 
+
+SOLUTION:
+

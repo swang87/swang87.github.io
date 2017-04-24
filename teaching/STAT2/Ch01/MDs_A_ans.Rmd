@@ -1,0 +1,103 @@
+---
+title: "Doctors and Hospitals I (Assess)"
+author: ""
+date: "Last Updated: Jan 27, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This exercise corresponds to Example 1.6 on p.39 of the text.
+
+```{r}
+data(MetroHealth83)
+```
+
+## Recap
+
+In the Fit step, we found the following model.
+
+```{r}
+m1 <- lm(NumMDs ~ NumHospitals, data=MetroHealth83)
+summary(m1)
+```
+
+This can be expressed in the following equation:
+
+$$ \widehat{NumMDs} = -385.10 + 282.01 NumHospitals $$  
+
+Let's now see if the conditions are met.
+
+## A First Glance
+
+Produce a scatterplot of `NumMDs` by `NumHospitals` with the regression line superimposed. This should look like Figure 1.12(a) on p. 41.
+
+SOLUTION:
+
+```{r}
+xyplot(NumMDs ~ NumHospitals, data=MetroHealth83, type=c("p", "r"))
+```
+
+## Residuals versus Fitted Values
+
+Produce a scatterplot of residuals against the fitted values. This should look like Figure 1.12(b) on p. 41.
+
+SOLUTION:
+
+```{r}
+xyplot(residuals(m1) ~ fitted(m1), type=c("p", "r"))
+```
+
+Describe what the two plots above tell you about the assumptions.
+
+SOLUTION:
+
+## Normality
+
+Now replicate the histogram of the residuals (Figure 1.13(a)) and the normal quantile plot of the residuals (Figure 1.13(b)).
+
+SOLUTION:
+
+```{r}
+histogram( ~ residuals(m1), width=500, density=TRUE)
+qqmath( ~ residuals(m1))
+```
+
+Discuss what these two plots tell you about the normality assumption.
+
+SOLUTION:
+
+
+Is the linear model fitted appropriate for the data?
+
+SOLUTION:
+
+

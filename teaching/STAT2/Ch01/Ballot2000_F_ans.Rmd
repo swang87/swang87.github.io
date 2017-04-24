@@ -1,0 +1,81 @@
+---
+title: "Butterfly Ballot (Fit)"
+author: ""
+date: "Last Updated: Feb 5, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This exercise corresponds to Example 1.9 beginning on p.49 of the text.
+
+```{r}
+data(PalmBeach)
+```
+
+## Recap
+
+Although there are a few outliers in the scatterplot of `Bush` against `Buchanan`, a simple linear regression still appears to be appropriate. 
+
+## Fit the Model
+
+Fit the linear model using all data points. Display the model summary.
+
+SOLUTION:
+
+```{r}
+m1 <- lm(Buchanan ~ Bush, data=PalmBeach)
+summary(m1)
+```
+
+$$ \widehat{Buchanan} = 45.29 + 4.917\times 10^{-3} Bush$$
+
+Fit the linear model excluding Palm Beach County. Display the model summary.
+
+SOLUTION:
+
+```{r}
+PalmBeach2 <- filter(PalmBeach, County != "PALM BEACH")
+m2 <- lm(Buchanan ~ Bush, data=PalmBeach2)
+summary(m2)
+```
+
+$$ \widehat{Buchanan} = 65.57 + 3.482\times 10^{-3} Bush$$
+
+Display both regression lines on a scatterplot with all counties. 
+
+SOLUTION:
+
+```{r}
+xyplot(Buchanan ~ Bush, data=PalmBeach, type=c("p", "r"))
+ladd(panel.abline(m2, col="red"))
+```
+

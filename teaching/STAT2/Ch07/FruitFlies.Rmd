@@ -1,0 +1,160 @@
+---
+title: "Another Look at Fruitflies"
+author: ""
+date: "Last Updated: July 30, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+require(Stat2Data)
+```
+
+This corresponds to a series of examples in Chapter 7, starting with Example 7.4 on p. 332. 
+
+## The Data
+
+In Chapter 5, we used the `FruitFlies` dataset to examine whether or not the mean lifespan of male fruit flies depended on the kind of mate(s) it resided with. 
+
+```{r}
+data(FruitFlies)
+head(FruitFlies)
+```
+
+Earlier, we found that mean lifespans of male fruit flies differed depending on the number/type of females it resided with.
+
+```{r}
+m1 <- lm(Longevity ~ Treatment, data=FruitFlies)
+anova(m1)
+```
+
+## Multiple Comparisons
+
+* Review: Run Fisher's LSD to see which pairs of treatments are determined to have significantly different means at an alpha level of 0.05.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Use the Bonferroni correction to see which pairs of treatments are determined to have significantly different means at an alpha level of 0.05. What do you conclude?
+
+SOLUTION:
+
+```{r}
+
+```
+
+* What is the relationship between the p-values in the two tables above?
+
+SOLUTION:
+
+* Use Tukey's HSD to see which pairs of treatments are determined to have significantly different means at an alpha level of 0.05. What do you conclude?
+
+SOLUTION:
+
+```{r}
+
+```
+
+## 2 Sample Comparisons
+
+Now, we will consider a subset of the dataset which contains 25 fruit flies in the 8 virgins group and the 25 fruit flies living alone and consider the similarities betwen regression and a two-sample comparison of means. 
+
+* Use the `filter()` function to create a new dataset, called `FruitFlies1` which only contains the 2 groups of interest.
+
+SOLUTION:
+
+```{r}
+
+```
+
+
+* Compute the sample mean of each group.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Produce a dot plot (using `dotPlot()`) like Figure 7.8 to illustrate the difference in lifespans of the two different groups. 
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Perform a **pooled** two-sample t-test on the data. What do you conclude?
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Perform an ANOVA to address the same question. What do you discover? 
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Fit a regression model using `Treatment = "none"` as the reference level. Show the regression summary.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Compare the results of the linear regression (and its associated ANOVA table) to the results of the pooled 2-sample t-test.
+
+SOLUTION:
+
+
+
+## Back to the Entire Sample
+
+* Fit a regression model using `Treatment = "none"` as the reference level. Show the regression summary.
+
+SOLUTION:
+
+```{r}
+
+```
+
+* What do you learn from the p-values in the linear model summary above? What do you learn from the p-value in the ANOVA table?
+
+SOLUTION:
+
+```{r}
+
+```
+

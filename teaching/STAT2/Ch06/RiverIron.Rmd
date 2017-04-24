@@ -1,0 +1,116 @@
+---
+title: "River Iron"
+author: ""
+date: "Last Updated: July 28, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This is taken from Example 6.2 on p.283 and Example on p.285. 
+
+## The Data
+
+In this set of examples, researchers investigate how the composition of the water changes as it flows from the source to the mouth of each of four rivers in upstate New York. 
+
+```{r}
+data(RiverIron)
+head(RiverIron)
+```
+
+We're also going to use the `tidyr` package, so let's load that in. 
+
+```{r}
+library(tidyr)
+```
+
+## Exploratory Analysis
+
+* Reproduce the table of `LogIron` amounts for each location in each river (Table 6.6).
+
+SOLUTION:
+
+```{r}
+
+```
+
+* Produce an interaction plot like Figure 6.3. 
+
+SOLUTION:
+
+```{r}
+
+```
+
+* What are the conditions necessary for a two-way additive model? What can you conclude from the interaction plot? 
+
+SOLUTION:
+
+
+## Fit and Assess
+
+* Fit the two-way additive model.
+
+SOLUTION:
+
+```{r}
+```
+
+* Assess the fit of the model by evaluating the assumptions of (1) normal errors and (2) constant variance (Figure 6.4).
+
+SOLUTION:
+
+```{r, fig.keep = 'last'}
+
+```
+
+```{r}
+```
+
+## Inference
+
+* Show the ANOVA table. What can you conclude? 
+
+SOLUTION:
+
+```{r}
+```
+
+* Consider Fisher's LSD. What are the LSD's for the two factors assuming an alpha level of 0.05? Show your calculations.
+
+SOLUTION:
+
+```{r}
+
+```
+
+
+* What can we conclude, bearing in mind the limitations of our dataset?
+
+SOLUTION:

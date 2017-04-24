@@ -1,0 +1,172 @@
+---
+title: "Fruitflies (Part 1)"
+author: ""
+date: "Last Updated: July 21, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This corresponds to several examples spread out in Chapter 5, beginning with Example 5.1 on p. 222.
+
+## The Data
+
+In this chapter, we explore how reproductive behavior affects longevity in fruit flies. The data are loaded below:
+
+```{r}
+data(FruitFlies)
+```
+
+## Example 5.1
+
+* Produce the numbers in Table 5.1.
+
+SOLUTION:
+
+```{r}
+favstats(Longevity ~ Treatment, data=FruitFlies)
+grandmean <- mean(~Longevity, data=FruitFlies)
+```
+
+* Calculate the treatment effects.
+
+SOLUTION:
+
+```{r}
+trt <- mean(Longevity ~ Treatment, data=FruitFlies) - 
+  mean(~Longevity, data=FruitFlies)
+trt
+```
+
+### Example 5.2
+
+
+In the null model the predicted value is the overall mean value of the response for any given observation. 
+
+* Draw the histogram of the residuals from a null model (modeling all lifetimes using a grand mean). See Figure 5.2 (a). 
+
+SOLUTION:
+
+```{r}
+m0 <- lm(Longevity ~ 1, data=FruitFlies)
+histogram(~resid(m0), breaks=15, xlim=c(-60, 60))
+```
+
+In the ANOVA model, we consider the means to vary significantly between groups, so the predicted values for each observation are their group means. 
+
+* Draw the histogram of the residuals from the ANOVA model. See Figure 5.2(b).
+
+SOLUTION:
+
+```{r}
+m1 <- lm(Longevity ~ Treatment, data=FruitFlies)
+histogram(~resid(m1), breaks=15, xlim=c(-60, 60))
+```
+
+
+
+
+* Which model seems to be better? How can you tell?
+
+SOLUTION:
+
+
+* Calculate residuals for a subset of 6 fruit flies randomly selected from your dataset. The sample is given to you below:
+
+```{r}
+set.seed(1987)
+s <- FruitFlies[sample(nrow(FruitFlies), 6),]
+```
+
+SOLUTION:
+
+```{r}
+yhats <- predict(m1, newdata=s)
+resids <- s$Longevity - yhats
+resids
+```
+
+* Confirm that the observed value for these 6 fruit flies can be decomposed as the grand mean + group effect + residual (as in Table 5.3).
+
+SOLUTION:
+
+```{r}
+cbind(s$Longevity, c(grandmean + trt[s$Treatment] + resids))
+```
+
+* Challenge: Calculate the triple decomposition sums of squares found in the middle of p. 231. In particular, be sure you can calculate the Observed Sums of Squares, Grand Mean Sums of Squares, Group Effect Sums of Squares, and Residual Sums of Squares.
+
+SOLUTION:
+
+```{r}
+# observed
+sum(FruitFlies$Longevity^2)
+
+# grand mean
+125*grandmean^2
+
+# group effect
+sum(25*trt^2)
+
+# residual
+sum(resid(m1)^2)
+```
+
+* See where you can find the SSGroups and SSE values from the ANOVA tables, so that you can match the calculation on the bottom of p. 231. 
+
+SOLUTION:
+
+```{r}
+anova(m1)
+```
+
+### Example 5.4
+
+* Check the normality assumption by producing a normal quantile plot (similar to Figure 5.3).
+
+```{r, fig.keep='last'}
+qqmath(~resid(m1))
+ladd(panel.qqmathline(resid(m1)))
+```
+
+* Evaluate the equal variances condition both numerically and graphically (Figure 5.4).
+
+```{r}
+sd(Longevity ~ Treatment, data=FruitFlies)
+xyplot(resid(m1)~fitted(m1))
+```
+
+* What do you conclude? Is the model appropriate?
+
+SOLUTION:
+
+
+
+
+

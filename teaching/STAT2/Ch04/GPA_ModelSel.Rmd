@@ -1,0 +1,99 @@
+---
+title: "First Year GPA: Choosing Predictors"
+author: ""
+date: "Last Updated: Feb 22, 2015"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)    
+require(Stat2Data)
+```
+
+This corresponds to Example 4.2 on p. 169.
+
+
+```{r}
+data(FirstYearGPA)
+```
+
+## The Data
+
+We'd like to create a good model for predicting `GPA` using the other available variables. Instead of being extra careful as we normally do, we'll try to automatically find the best model based on some criterion (bypassing the usual model assessment process of checking residuals and so on). 
+
+We will also skip the best subsets approach since this is the most computationally intensive and as such, gets rarely used.
+
+## Backward Elimination
+
+Use the `step()` function to do backward elimination to find the best model. You might consult `?step` to see how to use this function.
+
+SOLUTION:
+
+```{r}
+
+```
+
+## Forward Selection
+
+Again use the `step()` function to find the best model going in the forward direction.
+
+SOLUTION:
+
+```{r}
+
+```
+
+How does the best model obtained using forward selection differ from the best model obtained using backward elimination?
+
+SOLUTON:
+
+
+## Stepwise Regression
+
+Finally, use the `step()` function to perform stepwise regression. 
+
+SOLUTION:
+
+```{r}
+
+```
+
+Describe what is happening at each step of the process.
+
+SOLUTION:
+
+## The Best Model
+
+We casually threw around the term `the best model` in this exercise. What does it actually mean (according to the `step()` function) to find `the best model`?
+
+SOLUTION:
+
+
+
+
+
