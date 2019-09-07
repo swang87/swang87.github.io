@@ -1,10 +1,10 @@
-name : Xiaofei-Wang.com
-tagline: Xiaofei-Wang.com
-author : Xiaofei Wang
-author_email : swang@amherst.edu
+name : Xiaofei (Susan) Wang Homepage
+tagline: 
+author : 
+author_email : 
 
-production_url : http://xiaofei-wang.com/
-baseurl: http://xiaofei-wang.com
+production_url : http://swang87.github.io/
+baseurl: http://swang87.github.io
 
 auto : false
 google_analytics_code: UA-42671518-1
